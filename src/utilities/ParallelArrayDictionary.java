@@ -28,17 +28,22 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	}
 	@Override
 	public Value get(Object key) {
-		return 
+		int i=_keys.indexOf(key);
+		return _values.get(i);
 	}
 	@Override
 	public Value put(Key key, Value value) {
-		// TODO Auto-generated method stub
+		_keys.add(key);
+		_values.add(value);
 		return null;
 	}
 	@Override
 	public Value remove(Object key) {
-		// TODO Auto-generated method stub
-		return null;
+		<Value> info=_values.get(key);
+		int i=_keys.indexOf(key);
+		_keys.remove(key);
+		_values.remove(i);
+		return info;
 	}
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
@@ -47,7 +52,8 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	}
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		_keys.clear();
+		_values.clear();
 		
 	}
 	@Override
