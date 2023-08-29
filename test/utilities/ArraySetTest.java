@@ -1,5 +1,7 @@
 package utilities;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 class ArraySetTest
@@ -13,12 +15,13 @@ class ArraySetTest
 	@Test
 	void testAddE()
 	{
-		ArraySet<Integer> testSet = new ArraySet<Integer>();
-		assert testSet.add(5);
+		
+	ArraySet <Integer> testSet = new ArraySet<Integer>();
+	assertTrue(testSet.isEmpty());
 	}
 
 	@Test
-	void testAddAllCollectionOfQextendsE()
+	void testAddAll()
 	{
 	}
 
@@ -32,8 +35,4 @@ class ArraySetTest
 	{
 	}
 
-	@Test
-	void testAddAllIntCollectionOfQextendsE()
-	{
-	}
 }

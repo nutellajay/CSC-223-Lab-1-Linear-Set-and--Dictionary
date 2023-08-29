@@ -11,6 +11,10 @@ public class ArraySet<E> implements List<E>, Set<E>
 {
 	protected ArrayList<E> _list;
 
+	public ArraySet() {
+		_list = new ArrayList <E>();
+	}
+	
 	@Override
 	public boolean add(E e) {
 		return _list.add(e);
@@ -18,9 +22,11 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
-		for (int i=0; i<c.size(); i++) {
-			return _list.add(c[i]);
+		for (E value: c) {
+			//work in progress
+			_list.add(value);
 		}
+		return false;
 		
 	}
 
@@ -129,6 +135,12 @@ public class ArraySet<E> implements List<E>, Set<E>
 	@Override
 	public List<E> subList(int fromIndex, int toIndex) {
 		return _list.subList(fromIndex, toIndex);
+	}
+
+	@Override
+	public Spliterator<E> spliterator() {
+		// TODO Auto-generated method stub
+		return List.super.spliterator();
 	}
 	
 }
