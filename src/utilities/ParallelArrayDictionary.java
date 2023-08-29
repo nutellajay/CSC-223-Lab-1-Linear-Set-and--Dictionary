@@ -10,6 +10,12 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	protected ArraySet<Key> _keys;
 	protected ArrayList<Value> _values;
 	
+	public ParrallelArrayDictionary()
+	{
+		_keys=new ArraySet<Key>();
+		_values=new ArraySet<Value>();
+	}
+	
 	@Override
 	public int size() {
 		return _keys.size();
@@ -39,11 +45,12 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	}
 	@Override
 	public Value remove(Object key) {
-		<Value> info=_values.get(key);
-		int i=_keys.indexOf(key);
+		int i = _keys.indexOf(0);
+		Value holder = _values.get(i);
 		_keys.remove(key);
 		_values.remove(i);
-		return info;
+		return holder;
+		
 	}
 	@Override
 	public void putAll(Map<? extends Key, ? extends Value> m) {
@@ -58,8 +65,11 @@ public class ParallelArrayDictionary<Key, Value> implements Map<Key, Value>
 	}
 	@Override
 	public Set<Key> keySet() {
-		// TODO Auto-generated method stub
-		return null;
+		int length=_keys.size();
+		for (int i=0; i<length; i++) {
+			return _keys[i];
+		}
+
 	}
 	@Override
 	public Collection<Value> values() {
