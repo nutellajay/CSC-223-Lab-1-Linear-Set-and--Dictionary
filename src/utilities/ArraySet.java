@@ -17,9 +17,14 @@ public class ArraySet<E> implements List<E>, Set<E>
 	
 	@Override
 	public boolean add(E e) {
-		return _list.add(e);
-	}
-
+		if (_list.contains(e)) {	
+			return false;
+			}
+		else {
+			return _list.add(e);
+			}
+		}
+				
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
 		for (E value: c) {
@@ -64,7 +69,11 @@ public class ArraySet<E> implements List<E>, Set<E>
 
 	@Override
 	public boolean remove(Object o) {
-		return _list.remove(o);
+		return (boolean) _list.remove(o);
+	}
+	
+	public boolean removeInt(int index) {
+		return (boolean) _list.remove(index);
 	}
 
 	@Override
@@ -105,11 +114,6 @@ public class ArraySet<E> implements List<E>, Set<E>
 	@Override
 	public void add(int index, E element) {
 		_list.add(index, element);
-	}
-
-	@Override
-	public E remove(int index) {
-		return _list.remove(index);
 	}
 
 	@Override
